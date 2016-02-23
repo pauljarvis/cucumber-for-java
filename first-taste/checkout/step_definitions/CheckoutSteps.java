@@ -2,11 +2,15 @@ package step_definitions;
 
 import cucumber.api.java.en.*;
 import cucumber.api.PendingException;
+import implementation.Checkout;
 
 public class CheckoutSteps {
+
+    int bananaPrice = 0;
+
     @Given("^the price of a \"([^\"]*)\" is (\\d+)p$")
     public void thePriceOfAIsP(String name, int price) throws Throwable {
-        int bananaPrice = price;
+        bananaPrice = price;
     }
 
     @When("^I checkout (\\d+) \"([^\"]*)\"$")
