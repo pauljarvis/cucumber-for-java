@@ -9,7 +9,7 @@ import implementation.Checkout;
 public class CheckoutSteps {
 
     int bananaPrice = 0;
-    Checkout checkout;
+    Checkout checkout = new Checkout();
 
     @Given("^the price of a \"([^\"]*)\" is (\\d+)p$")
     public void thePriceOfAIsP(String name, int price) throws Throwable {
@@ -18,7 +18,6 @@ public class CheckoutSteps {
 
     @When("^I checkout (\\d+) \"([^\"]*)\"$")
     public void iCheckout(int itemCount, String itemName) throws Throwable {
-        checkout = new Checkout();
         checkout.add(itemCount, bananaPrice);
     }
 
