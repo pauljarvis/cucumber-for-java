@@ -5,20 +5,22 @@ import static org.junit.Assert.*;
 import cucumber.api.java.en.*;
 import cucumber.api.PendingException;
 import implementation.Checkout;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CheckoutSteps {
 
-    int bananaPrice = 0;
+    Map<String, Integer> prices = new HashMap<String, Integer>();
     Checkout checkout = new Checkout();
 
     @Given("^the price of a \"([^\"]*)\" is (\\d+)p$")
     public void thePriceOfAIsP(String name, int price) throws Throwable {
-        bananaPrice = price;
+        prices.put(name, price);
     }
 
     @When("^I checkout (\\d+) \"([^\"]*)\"$")
     public void iCheckout(int itemCount, String itemName) throws Throwable {
-        checkout.add(itemCount, bananaPrice);
+        checkout.add(itemCount, prices.get(itemName));
     }
 
     @Then("^the total price should be (\\d+)p$")

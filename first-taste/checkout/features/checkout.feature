@@ -14,3 +14,11 @@ Feature: Checkout
     When I checkout 1 "banana"
     And I checkout 1 "banana"
     Then the total price should be 80p
+
+  Scenario: A banana and an apple
+    Given the price of a "banana" is 40p
+    And the price of a "apple" is 25p
+    When I checkout 1 "banana"
+    And I checkout 1 "apple"
+    Then the total price should be 65p
+
